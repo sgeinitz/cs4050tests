@@ -18,24 +18,24 @@ class TestAssign2Functions(unittest.TestCase):
         random.seed(1)
         random.shuffle(self.list_shuffled)
         self.shuf_bubbleRes = bubbleSort(list(self.list_shuffled))
-        self.shuf_mergeRes2 = mergeSort(list(self.list_shuffled), split_by_3=False)
-        self.shuf_mergeRes3 = mergeSort(list(self.list_shuffled), split_by_3=True)
-        self.shuf_quickResA = quickSort(list(self.list_shuffled), pivot_to_use='first')
-        self.shuf_quickResB = quickSort(list(self.list_shuffled), pivot_to_use='middle')
-        self.shuf_radixRes = radixSort(list(self.list_shuffled), math.ceil(math.log10(max(self.list_sorted))))
+        self.shuf_mergeRes2 = mergeSort(list(self.list_shuffled), split_by_k=2)
+        self.shuf_mergeRes3 = mergeSort(list(self.list_shuffled), split_by_k=3)
+        self.shuf_quickResA = quickSort(list(self.list_shuffled), pivot='first')
+        self.shuf_quickResB = quickSort(list(self.list_shuffled), pivot='middle')
+        self.shuf_radixRes = radixSort(list(self.list_shuffled))
         self.rev_bubbleRes = bubbleSort(list(self.list_reversed))
-        self.rev_mergeRes2 = mergeSort(list(self.list_reversed), split_by_3=False)
-        self.rev_mergeRes3 = mergeSort(list(self.list_reversed), split_by_3=True)
-        self.rev_quickResA = quickSort(list(self.list_reversed), pivot_to_use='first')
-        self.rev_quickResB = quickSort(list(self.list_reversed), pivot_to_use='middle')
-        self.rev_radixRes = radixSort(list(self.list_reversed), math.ceil(math.log10(max(self.list_sorted))))
+        self.rev_mergeRes2 = mergeSort(list(self.list_reversed), split_by_k=2)
+        self.rev_mergeRes3 = mergeSort(list(self.list_reversed), split_by_k=3)
+        self.rev_quickResA = quickSort(list(self.list_reversed), pivot='first')
+        self.rev_quickResB = quickSort(list(self.list_reversed), pivot='middle')
+        self.rev_radixRes = radixSort(list(self.list_reversed))
         self.m2 = 0
         self.m3 = 0
         for i in range(10):
             tmp = self.list_sorted.copy()
             random.shuffle(tmp)
-            self.m2 += mergeSort(tmp, split_by_3=False)[1]
-            self.m3 += mergeSort(tmp, split_by_3=True)[1]
+            self.m2 += mergeSort(tmp, split_by_k=2)[1]
+            self.m3 += mergeSort(tmp, split_by_k=3)[1]
         self.m2 /= 10
         self.m3 /= 10
 
