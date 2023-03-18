@@ -10,28 +10,28 @@ class TestAssign4Functions(unittest.TestCase):
         self.g100A = adjMatFromFile("graph_verts100_A.txt")
         self.g100B = adjMatFromFile("graph_verts100_B.txt")
 
-        self.res_prim10 = prim(self.g10)
+        self.res_prim10 = prims(self.g10)
         self.res_prim10.sort()
-        self.res_krus10 = kruskal(self.g10)
+        self.res_krus10 = kruskals(self.g10)
         self.res_krus10.sort()
 
         start_time = time.time()
-        self.res_prim100A = prim(self.g100A)
+        self.res_prim100A = prims(self.g100A)
         self.time_prim100A = time.time() - start_time
         self.res_prim100A.sort()
 
         start_time = time.time()
-        self.res_krus100A = kruskal(self.g100A)
+        self.res_krus100A = kruskals(self.g100A)
         self.time_krus100A = time.time() - start_time
         self.res_krus100A.sort()
 
         start_time = time.time()
-        self.res_prim100B = prim(self.g100B)
+        self.res_prim100B = prims(self.g100B)
         self.time_prim100B = time.time() - start_time
         self.res_prim100B.sort()
 
         start_time = time.time()
-        self.res_krus100B = kruskal(self.g100B)
+        self.res_krus100B = kruskals(self.g100B)
         self.time_krus100B = time.time() - start_time
         self.res_krus100B.sort()
 
