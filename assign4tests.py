@@ -60,6 +60,6 @@ class TestAssign4Functions(unittest.TestCase):
 
     def testTimings(self):
         """ Confirm each algo runs as quickly as expected (given the input) """
-        #self.assertGreater(self.time_prim100A, self.time_krus100A) # original test
+        self.assertGreater(self.time_prim100A, self.time_krus100A) # original test
         # self.assertGreater(self.time_prim100A*1.5, self.time_krus100A)   # for Weston's implementation and other similar ones
         self.assertGreater(self.time_krus100B, self.time_krus100A)
