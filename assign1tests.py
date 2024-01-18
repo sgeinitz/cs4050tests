@@ -1,7 +1,7 @@
 import unittest
 import random
 import math
-from assign01 import *
+from assign1 import *
 
 
 class TestAssign1Functions(unittest.TestCase):
