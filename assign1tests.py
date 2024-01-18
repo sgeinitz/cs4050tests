@@ -39,7 +39,7 @@ class TestAssign1Functions(unittest.TestCase):
         ts_res = trinarySearch(self.list_testA, self.item_testA)
         print(f"testTrinarySearchA runtime = {ts_res[2]:.6f}")
         self.assertEqual(ts_res[0], self.index_testA)
-        self.assertEqual(bs_res[1], 1)
+        self.assertEqual(ts_res[1], 1)
 
     def testLinearSearchB(self):
         """ Confirm that linearSearch can find an item """
