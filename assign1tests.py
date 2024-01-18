@@ -10,54 +10,73 @@ class TestAssign1Functions(unittest.TestCase):
     def setUp(self):
         self.list_testA = [3, 5, 6, 13, 22, 27, 34]
         self.item_testA = 13
+        self.index_testA = self.list_testA.index(self.item_testA)
         self.list_testB = list(range(1, 1001))
         self.item_testB = 500
-        self.list_testC = list(range(1, 100001))
-        self.item_testC = 50000
-        self.testC_linear_runtime = linearSearch(self.list_testC, self.item_testC)[2]
-        self.testC_binary_runtime = binarySearch(self.list_testC, self.item_testC)[2]
+        self.index_testB = self.list_testB.index(self.item_testB)
+        self.list_testC = list(range(1, int(1e7)))
+        self.item_testC = int(1e7)+1
+        self.linear_testC = linearSearch(self.list_testC, self.item_testC)
+        self.binary_testC = binarySearch(self.list_testC, self.item_testC)
+        self.trinary_testC = trinarySearch(self.list_testC, self.item_testC)
 
     def testLinearSearchA(self):
         """ Confirm that linearSearch can find an item """
         ls_res = linearSearch(self.list_testA, self.item_testA)
         print(f"testLinearSearchA runtime = {ls_res[2]:.6f}")
-        self.assertTrue(ls_res[0])
+        self.assertEqual(ls_res[0], self.index_testA)
         self.assertEqual(ls_res[1], 4)
 
     def testBinarySearchA(self):
         """ Confirm that binarySearch can find an item """
         bs_res = binarySearch(self.list_testA, self.item_testA)
         print(f"testBinarySearchA runtime = {bs_res[2]:.6f}")
-        self.assertTrue(bs_res[0])
+        self.assertEqual(bs_res[0], self.index_testA)
+        self.assertEqual(bs_res[1], 1)
+
+    def testTrinarySearchA(self):
+        """ Confirm that trinarySearch can find an item """
+        ts_res = trinarySearch(self.list_testA, self.item_testA)
+        print(f"testTrinarySearchA runtime = {ts_res[2]:.6f}")
+        self.assertEqual(ts_res[0], self.index_testA)
         self.assertEqual(bs_res[1], 1)
 
     def testLinearSearchB(self):
         """ Confirm that linearSearch can find an item """
         ls_res = linearSearch(self.list_testB, self.item_testB)
         print(f"testLinearSearchB runtime = {ls_res[2]:.6f}")
-        self.assertTrue(ls_res[0])
+        self.assertEqual(ls_res[0], self.index_testB)
         self.assertEqual(ls_res[1], self.item_testB)
 
     def testBinarySearchB(self):
         """ Confirm that binarySearch can find an item """
         bs_res = binarySearch(self.list_testB, self.item_testB)
         print(f"testBinarySearchB runtime = {bs_res[2]:.6f}")
-        self.assertTrue(bs_res[0])
+        self.assertEqual(bs_res[0], self.index_testB)
         self.assertLessEqual(bs_res[1], int(math.log2(len(self.list_testB))) + 1)
 
+    def testTrinarySearchB(self):
+        """ Confirm that binarySearch can find an item """
+        ts_res = trinarySearch(self.list_testB, self.item_testB)
+        print(f"testTrinarySearchB runtime = {ts_res[2]:.6f}")
+        self.assertEqual(ts_res[0], self.index_testB)
+        self.assertLessEqual(ts_res[1], int(math.log2(len(self.list_testB))) + 1)
+
     def testLinearSearchC(self):
-        """ Confirm that linearSearch can find an item """
-        ls_res = linearSearch(self.list_testC, self.item_testC)
-        print(f"testLinearSearchC runtime = {ls_res[2]:.6f}")
-        self.assertTrue(ls_res[0])
-        self.assertEqual(ls_res[1], self.item_testC)
+        print(f"testLinearSearchC runtime = {self.linear_testC[2]:.6f}")
+        self.assertEqual(self.linear_testC[0], -1)
+        self.assertAlmostEqual(self.linear_testC[1]/1e7, 1.00000, 5)
 
     def testBinarySearchC(self):
-        """ Confirm that binarySearch can find an item """
-        bs_res = binarySearch(self.list_testC, self.item_testC)
-        print(f"testBinarySearchC runtime = {bs_res[2]:.6f}")
-        self.assertTrue(bs_res[0])
-        self.assertLessEqual(bs_res[1], int(math.log2(len(self.list_testC))) + 1)
+        print(f"testBinarySearchC runtime = {self.binary_testC[2]:.6f}")
+        self.assertEqual(self.binary_testC[0], -1)
+        self.assertAlmostEqual(self.binary_testC[1]/(math.log(1e7, 2)+2), 0.9, 1)
+
+    def testTrinarySearchC(self):
+        print(f"testTrinarySearchC runtime = {self.trinary_testC[2]:.6f}")
+        self.assertEqual(self.trinary_testC[0], -1)
+        self.assertAlmostEqual(self.trinary_testC[1]/(2*math.log(1e7, 3)+2), 0.9, 1)
 
     def testCompareRuntimes(self):
-        self.assertLess(self.testC_binary_runtime, self.testC_linear_runtime/5.0)
+        self.assertLess(self.binary_testC[2], self.linear_testC[2]/5.0)
+        self.assertLess(self.trinary_testC[2], self.linear_testC[2]/5.0)
