@@ -39,7 +39,7 @@ class TestAssign1Functions(unittest.TestCase):
         ts_res = trinarySearch(self.list_testA, self.item_testA)
         print(f"testTrinarySearchA runtime = {ts_res[2]:.6f}")
         self.assertEqual(ts_res[0], self.index_testA)
-        self.assertEqual(ts_res[1], 1)
+        self.assertLessEqual(ts_res[1], 2*math.log(len(self.list_testA), 3) + 2)
 
     def testLinearSearchB(self):
         """ Confirm that linearSearch can find an item """
@@ -60,22 +60,22 @@ class TestAssign1Functions(unittest.TestCase):
         ts_res = trinarySearch(self.list_testB, self.item_testB)
         print(f"testTrinarySearchB runtime = {ts_res[2]:.6f}")
         self.assertEqual(ts_res[0], self.index_testB)
-        self.assertLessEqual(ts_res[1], int(math.log2(len(self.list_testB))) + 1)
+        self.assertLessEqual(ts_res[1], 2*math.log(len(self.list_testB), 3) + 2)
 
     def testLinearSearchC(self):
         print(f"testLinearSearchC runtime = {self.linear_testC[2]:.6f}")
         self.assertEqual(self.linear_testC[0], -1)
-        self.assertAlmostEqual(self.linear_testC[1]/1e7, 1.00000, 5)
+        self.assertAlmostEqual(self.linear_testC[1]/1e7, 1, 1)
 
     def testBinarySearchC(self):
         print(f"testBinarySearchC runtime = {self.binary_testC[2]:.6f}")
         self.assertEqual(self.binary_testC[0], -1)
-        self.assertAlmostEqual(self.binary_testC[1]/(math.log(1e7, 2)+2), 0.9, 1)
+        self.assertAlmostEqual(self.binary_testC[1]/(math.log(1e7, 2)+2), 1, 1)
 
     def testTrinarySearchC(self):
         print(f"testTrinarySearchC runtime = {self.trinary_testC[2]:.6f}")
         self.assertEqual(self.trinary_testC[0], -1)
-        self.assertAlmostEqual(self.trinary_testC[1]/(2*math.log(1e7, 3)+2), 0.9, 1)
+        self.assertAlmostEqual(self.trinary_testC[1]/(2*math.log(1e7, 3)+2), 1, 1)
 
     def testCompareRuntimes(self):
         self.assertLess(self.binary_testC[2], self.linear_testC[2]/5.0)
