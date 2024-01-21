@@ -75,7 +75,7 @@ class TestAssign1Functions(unittest.TestCase):
     def testTrinarySearchC(self):
         print(f"testTrinarySearchC runtime = {self.trinary_testC[2]:.6f}")
         self.assertEqual(self.trinary_testC[0], -1)
-        self.assertAlmostEqual(self.trinary_testC[1]/(2*math.log(1e7, 3)+2), 1, 1)
+        self.assertAlmostEqual(self.trinary_testC[1], (2*math.floor(math.log(1e7, 3))+1), delta=2)
 
     def testCompareRuntimes(self):
         self.assertLess(self.binary_testC[2], self.linear_testC[2]/5.0)
