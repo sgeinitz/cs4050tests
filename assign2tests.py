@@ -57,10 +57,9 @@ class TestAssign2Functions(unittest.TestCase):
         self.assertGreater(self.shuf_bubbleRes[1]/2, self.shuf_mergeRes[1])
         self.assertGreater(self.shuf_bubbleRes[1]/10, self.shuf_quickResA[1])
         self.assertGreater(self.shuf_bubbleRes[1]/10, self.shuf_quickResB[1])
-        self.assertGreater(self.shuf_bubbleRes[1]/10, self.shuf_radixRes[1]) # someone's radix was slow (but correct)
-        #self.assertGreater(self.shuf_bubbleRes[1], self.shuf_radixRes[1])
+        self.assertGreater(self.shuf_bubbleRes[1]/10, self.shuf_radixRes[1])
         self.assertGreater(self.rev_quickResA[1]/10, self.rev_quickResB[1])
-        # compare insertionSort
-        # compare hybridSort
+        # still need to compare insertionSort
+        # still need to compare hybridSort
 
 
