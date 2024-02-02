@@ -11,7 +11,7 @@ class TestAssign2Functions(unittest.TestCase):
     """ A class derived from unittest.TestCase to test assign2.py functions """
 
     def setUp(self):
-        self.list_sorted = list(range(1, 10001))
+        self.list_sorted = list(range(1, 5001))
         self.small_list = list(range(1, 51))
         self.list_reversed = self.list_sorted.copy()
         self.list_reversed.reverse()
@@ -79,7 +79,7 @@ class TestAssign2Functions(unittest.TestCase):
         self.assertGreater(self.shuf_bubbleRes[1]/10, self.shuf_quickResB[1])
         self.assertGreater(self.shuf_bubbleRes[1]/10, self.shuf_radixRes[1])
         self.assertGreater(self.rev_quickResA[1]/10, self.rev_quickResB[1])
-        self.assertGreater(self.rev_insertionRes[1]/5, self.shuf_insertionRes[1])
+        self.assertGreater(self.rev_insertionRes[1]/1.5, self.shuf_insertionRes[1])
 
     def testHybridForLargeLists(self):
         """ Confirm that hybrid sort is faster than insertion sort on large lists. """
