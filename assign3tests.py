@@ -74,17 +74,6 @@ class TestAssign3Functions(unittest.TestCase):
         self.assertEqual(self.res_dijkstra_pq100A, self.res_floyd100A)
         self.assertEqual(self.res_dijkstra_arr100A, self.res_floyd100A)
 
-    def testFloydTiming(self):
-        """ Floyd's runtime is not dependent on number of edges """
-        self.assertLess(self.elapsed_time_floydA/self.elapsed_time_floydB, 1.5)
-        self.assertGreater(self.elapsed_time_floydA/self.elapsed_time_floydB, 0.5)
-
-    def testDijkstraTiming(self):
-        """ Dijkstra with array should be similar, but with priqueue is different """
-        self.assertLess(self.elapsed_time_dijkstra_arrA/self.elapsed_time_dijkstra_arrB, 1.5)
-        self.assertGreater(self.elapsed_time_dijkstra_arrA/self.elapsed_time_dijkstra_arrB, 0.5)
-        self.assertGreater(self.elapsed_time_dijkstra_pqB/self.elapsed_time_dijkstra_pqA, 1.1) # was 1.50
-
     def testDijkstra10(self):
         """ Confirm that functions run as expected """
         expected_10 = [46, 52, 0, 19, 8, 2, 37, 9, 30, 25]
@@ -99,4 +88,15 @@ class TestAssign3Functions(unittest.TestCase):
         expected20 = [24, 8, 0, 31, 8, 19, 16, 8, 20, 15, 21, 14, 34, 18, 24, 29, 21, 26, 17, 7]
         self.assertEqual(self.res_dijkstra_pq20, expected20)
         self.assertEqual(self.res_dijkstra_arr20, expected20)
+
+    def testTiming01(self):
+        """ Floyd's runtime is not dependent on number of edges """
+        self.assertLess(self.elapsed_time_floydA/self.elapsed_time_floydB, 1.5)
+        self.assertGreater(self.elapsed_time_floydA/self.elapsed_time_floydB, 0.5)
+
+    def testTiming02(self):
+        """ Dijkstra with array should be similar, but with priqueue is different """
+        self.assertLess(self.elapsed_time_dijkstra_arrA/self.elapsed_time_dijkstra_arrB, 1.5)
+        self.assertGreater(self.elapsed_time_dijkstra_arrA/self.elapsed_time_dijkstra_arrB, 0.5)
+        self.assertGreater(self.elapsed_time_dijkstra_pqB/self.elapsed_time_dijkstra_pqA, 1.1) # was 1.50
 
