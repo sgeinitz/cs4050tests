@@ -1,6 +1,6 @@
 import unittest
 
-from assign04 import *
+from assign4 import *
 
 class TestAssign4Functions(unittest.TestCase):
     """ A class derived from unittest.TestCase to test assign04.py functions """
