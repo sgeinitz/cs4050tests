@@ -8,7 +8,7 @@ class TestAssign1Functions(unittest.TestCase):
     """ A class derived from unittest.TestCase to test activity01.py functions """
 
     def setUp(self):
-        self.list_testA = [3, 5, 6, 13, 22, 27, 34]
+        self.list_testA = [3, 5, 6, 13, 22, 27, 35]
         self.item_testA = 13
         self.index_testA = self.list_testA.index(self.item_testA)
         self.list_testB = list(range(1, 1001))
