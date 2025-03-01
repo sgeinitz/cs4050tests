@@ -87,4 +87,4 @@ class TestSortingFunctions(unittest.TestCase):
 
     def testHybridForSmallLists(self):
         """ Confirm that hybrid sort is faster than merge sort on small lists. """
-        self.assertGreater(self.merge_avg_on_small_list, self.hybrid_avg_on_small_list)
+        self.assertGreater(self.merge_avg_on_small_list, self.hybrid_avg_on_small_list*1.25) # added 1.25 for one person's implementation
